@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三年级数学练习 - 开始</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 50px;
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .form-control {
+            font-size: 1.2em;
+            padding: 12px;
+            border-radius: 10px;
+        }
+        .form-label {
+            font-size: 1.2em;
+            color: #666;
+        }
+        .btn-start {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            font-size: 1.3em;
+            padding: 15px 40px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn-start:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+            transform: scale(1.05);
+        }
+        .title {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body p-5">
+                <h1 class="text-center title">三年级数学练习</h1>
+                <p class="text-center subtitle">让我们开始有趣的数学练习吧！</p>
+
+                <form id="gameConfig" class="mb-4">
+                    <div class="mb-4">
+                        <label for="totalQuestions" class="form-label">题目数量</label>
+                        <select class="form-select" id="totalQuestions" required>
+                            <option value="10">10题</option>
+                            <option value="20">20题</option>
+                            <option value="30">30题</option>
+                            <option value="50">50题</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="timeLimit" class="form-label">每题时间限制（秒）</label>
+                        <select class="form-select" id="timeLimit" required>
+                            <option value="5">5秒</option>
+                            <option value="10" selected>10秒</option>
+                            <option value="15">15秒</option>
+                            <option value="20">20秒</option>
+                        </select>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary btn-start">开始练习</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('gameConfig').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const totalQuestions = document.getElementById('totalQuestions').value;
+            const timeLimit = document.getElementById('timeLimit').value;
+            
+            // 将配置保存到 localStorage
+            localStorage.setItem('gameConfig', JSON.stringify({
+                totalQuestions: parseInt(totalQuestions),
+                timeLimit: parseInt(timeLimit)
+            }));
+            
+            // 跳转到游戏页面
+            window.location.href = '/game';
+        });
+    </script>
+</body>
+</html> 
